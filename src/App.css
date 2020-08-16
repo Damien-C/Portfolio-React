@@ -27,7 +27,6 @@ body {
     line-height: 25px;
     font-family: 'waiting_for_the_sunriseRg', 'Noto Sans KR', sans-serif;
     background-color: #fff;
-    min-width: 1024px;
     color:#3c3c3c;
 }
 a{
@@ -128,6 +127,7 @@ img{
 }
 
 
+
 /* Custom CSS cdde */
 
 @font-face {
@@ -185,17 +185,37 @@ img{
 
 @media (prefers-reduced-motion: no-preference){
   .firstTextShow{
-    animation: rotateObject ease .5s;
+    animation: rotateObject ease 1s;
   }
 }
 @keyframes rotateObject {
   from {
     transform: translateY(-50vh);
+    opacity: 0;
   }
   to {
     transform: translateY(0vh);
+    opacity: 1;
   }
 }
 .paragraghs{
   width: 90vh;
+}
+
+/* Media Query for Mobile View */
+@media all and (max-width: 500px){
+  .navigationWrap a{
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .paragraghs {
+    width: auto;
+    margin: 2vh;
+  }
+  .firstTextShow {
+    text-align: center;
+  }
+  .navigationWrap ul {
+    float: none;
+  }
 }
