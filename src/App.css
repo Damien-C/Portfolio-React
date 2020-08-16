@@ -204,6 +204,9 @@ img{
 
 /* Media Query for Mobile View */
 @media all and (max-width: 500px){
+  .frameWrap {
+    min-height: 90vh;
+  }
   .navigationWrap a{
     font-size: 1rem;
     font-weight: bold;
