@@ -1,3 +1,93 @@
+/* Default Resetting CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+    line-height: 25px;
+    font-family: 'waiting_for_the_sunriseRg', 'Noto Sans KR', sans-serif;
+    background-color: #fff;
+    min-width: 1024px;
+    color:#3c3c3c;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ul{
+    overflow: auto;
+}
+select{
+    border: none;
+    border-bottom: 1px solid #d2d2d2;
+    font-size: .9rem;
+    padding-bottom: .1rem;
+    padding-right: 3rem;
+    color: #3c3c3c;
+    margin-left: 5rem;
+}
+input{
+    border: none;
+}
+button{
+    border: none;
+    padding: .5rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 7.4px 6.7px 8px 2px rgba(9, 9, 9, 0.06);
+    border-radius: 4px;
+    font-weight: 300;
+    background-color: #fff;
+    min-width: 5rem;
+}
+button:focus{
+    outline: none;
+}
+button:hover{
+    background-color: #6c8b8d;
+    color: #fff;
+}
+img{
+    width:100px;
+}
+
+/* React default auto-generated code */
 .App {
   text-align: center;
 }
@@ -37,3 +127,75 @@
   }
 }
 
+
+/* Custom CSS cdde */
+
+@font-face {
+  font-family: 'waiting_for_the_sunriseRg';
+  src: url('./fonts/waitingforthesunrise-regular-webfont.woff2') format('woff2'),
+       url('./fonts/waitingforthesunrise-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+.clear{
+  clear: both;
+}
+.navigationWrap{
+  background-color: #8FCED5;
+}
+.navigationWrap ul{
+  float: right;
+  padding: 0 1vh;
+  color: #ffffff;
+}
+.navigationWrap li{
+  display: inline-block;
+  margin: 1.5vh 1vh 0 1.5vh;
+}
+.navigationWrap a{
+  display: block;
+  font-size: 1.5rem;
+}
+.navigationWrap a:hover{
+  color: #545454;
+  border-bottom: 1.5vh solid #545454;
+}
+.activeLink{
+  color: #545454;
+  border-bottom: 1.5vh solid #545454;
+}
+.frameWrap{
+  background-color: #fff;
+  min-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #545454;
+}
+.firstTextShow{
+  font-size: 7vh;
+  margin: 4vh 0;
+  width: 45vh;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .firstTextShow{
+    animation: rotateObject ease .5s;
+  }
+}
+@keyframes rotateObject {
+  from {
+    transform: translateY(-50vh);
+  }
+  to {
+    transform: translateY(0vh);
+  }
+}
+.paragraghs{
+  width: 90vh;
+}
