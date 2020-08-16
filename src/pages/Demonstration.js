@@ -5,7 +5,9 @@ class Demonstration extends React.Component{
     render(){
         return(
             <div className='frameWrap'>
-                This is the Demonstration page.
+                <div className='demoText'>
+                    We don't make mistakes, just happy little accidents. Programming should be fun.
+                </div>
             </div>
         );
     }

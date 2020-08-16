@@ -5,7 +5,9 @@ class Experiences extends React.Component{
     render(){
         return(
             <div className='frameWrap'>
-                This is the Experiences page.
+                <div className='experiencesText'>
+                    I'm a Full Stack Web / Dapp Developer !
+                </div>
             </div>
         );
     }

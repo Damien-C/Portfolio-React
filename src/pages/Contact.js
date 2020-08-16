@@ -5,7 +5,9 @@ class Contact extends React.Component{
     render(){
         return(
             <div className='frameWrap'>
-                This is the Contact page.
+                <div className='contactText'>
+                    "A man has as many social selves as there are individuals who recognize him."
+                </div>
             </div>
         );
     }

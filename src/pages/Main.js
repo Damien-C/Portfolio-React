@@ -6,7 +6,7 @@ class Main extends React.Component{
     render(){
         return(
             <div className='frameWrap'>
-                <div className='firstTextShow'>
+                <div className='mainText'>
                     A PROGRAMMER CAN CHANGE THE WORLD !
                 </div>
                 <div className='paragraghs'>

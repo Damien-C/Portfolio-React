@@ -5,7 +5,9 @@ class Achievements extends React.Component{
     render(){
         return(
             <div className='frameWrap'>
-                This is the Achievements page.
+                <div className='achievementsText'>
+                    "Genius is one percent inspiration and ninety-nine perspiration."
+                </div>
             </div>
         );
     }

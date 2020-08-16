@@ -28,6 +28,7 @@ body {
     font-family: 'waiting_for_the_sunriseRg', 'Noto Sans KR', sans-serif;
     background-color: #fff;
     color:#3c3c3c;
+    background-image:url("./images/background.png");
 }
 a{
     color: inherit;
@@ -83,7 +84,7 @@ button:hover{
     color: #fff;
 }
 img{
-    width:100px;
+    max-width:100%;
 }
 
 /* React default auto-generated code */
@@ -148,7 +149,7 @@ img{
 .navigationWrap ul{
   float: right;
   padding: 0 1vh;
-  color: #ffffff;
+  color: #ececec;
 }
 .navigationWrap li{
   display: inline-block;
@@ -167,7 +168,7 @@ img{
   border-bottom: 1.5vh solid #545454;
 }
 .frameWrap{
-  background-color: #fff;
+  /* background-color: #fff; */
   min-height: 94vh;
   display: flex;
   flex-direction: column;
@@ -176,21 +177,38 @@ img{
   font-size: calc(10px + 2vmin);
   color: #545454;
 }
-.firstTextShow{
+.mainText{
   font-size: 7vh;
   margin: 4vh 0;
   width: 45vh;
   line-height: 1;
 }
+.experiencesText, .achievementsText, .demoText, .contactText{
+  font-size: 2rem;
+  width: auto;
+  line-height: 1;
+}
 
 @media (prefers-reduced-motion: no-preference){
-  .firstTextShow{
-    animation: rotateObject ease 1s;
+  .mainText{
+    animation: moveFromTop ease 1s;
+  }
+  .experiencesText{
+    animation: moveFromLeft ease 1s;
+  } 
+  .achievementsText{
+    animation: moveFromRight ease 1s;
+  } 
+  .demoText{
+    animation: moveFromTop ease 1s;
+  } 
+  .contactText{
+    animation: showUp ease 1s;
   }
 }
-@keyframes rotateObject {
+@keyframes moveFromTop {
   from {
-    transform: translateY(-50vh);
+    transform: translateY(-30vh);
     opacity: 0;
   }
   to {
@@ -198,6 +216,35 @@ img{
     opacity: 1;
   }
 }
+@keyframes moveFromLeft {
+  from {
+    transform: translateX(-50vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0vh);
+    opacity: 1;
+  }
+}
+@keyframes moveFromRight {
+  from {
+    transform: translateX(50vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0vh);
+    opacity: 1;
+  }
+}
+@keyframes showUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .paragraghs{
   width: 90vh;
 }
@@ -215,7 +262,7 @@ img{
     width: auto;
     margin: 2vh;
   }
-  .firstTextShow {
+  .mainText, .experiencesText, .achievementsText, .demoText, .contactText {
     text-align: center;
   }
   .navigationWrap ul {
