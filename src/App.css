@@ -144,7 +144,8 @@ img{
   clear: both;
 }
 .navigationWrap{
-  background-color: #8FCED5;
+  /* background-color: #8FCED5; */
+  background-color: #89c1bb;
 }
 .navigationWrap ul{
   float: right;
