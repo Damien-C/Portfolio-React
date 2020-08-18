@@ -283,6 +283,9 @@ img{
   .rightPannel{
     animation: moveFromRight ease 1s;
   }
+  .photoListWrap{
+    animation: moveFromLeft ease 1s;
+  }
 }
 @keyframes moveFromTop {
   from {
