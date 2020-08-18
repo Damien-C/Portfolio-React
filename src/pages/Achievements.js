@@ -4,10 +4,11 @@ import '../App.css';
 class Achievements extends React.Component{
     render(){
         return(
-            <div className='frameWrap'>
-                <div className='achievementsText'>
+            <div className='frameWrapMain'>
+                <div className='achievementsText pageTitle'>
                     "Genius is one percent inspiration and ninety-nine perspiration."
                 </div>
+
             </div>
         );
     }

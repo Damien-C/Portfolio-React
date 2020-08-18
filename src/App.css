@@ -29,6 +29,7 @@ body {
     background-color: #fff;
     color:#3c3c3c;
     background-image:url("./images/background.png");
+    width: 100%;
 }
 a{
     color: inherit;
@@ -48,9 +49,6 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-ul{
-    overflow: auto;
 }
 select{
     border: none;
@@ -154,7 +152,7 @@ img{
 }
 .navigationWrap li{
   display: inline-block;
-  margin: 1.5vh 1vh 0 1.5vh;
+  margin: 1.5vh 1.5vh 0 1.5vh;
 }
 .navigationWrap a{
   display: block;
@@ -168,15 +166,16 @@ img{
   color: #545454;
   border-bottom: 1.5vh solid #545454;
 }
-.frameWrap{
+.frameWrapMain{
   /* background-color: #fff; */
-  min-height: 94vh;
+  min-height: 88vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #545454;
+  padding: 3vh;
 }
 .mainText{
   font-size: 7vh;
@@ -185,11 +184,41 @@ img{
   line-height: 1;
 }
 .experiencesText, .achievementsText, .demoText, .contactText{
-  font-size: 2rem;
+  font-size: 2.5rem;
   width: auto;
   line-height: 1;
 }
 
+.experiencesText{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.leftPannel{
+  display: block;
+  float: left;
+  width: 50%;
+}
+.rightPannel{
+  display: block;
+  float: right;
+  width: 50%;
+}
+.pannelTitle{
+  text-align: center;
+  padding: 1vh;
+  font-size: 2rem;
+}
+.textContent{
+  padding: 1vh;
+}
+.textList li{
+  margin: 1.2vh 0;
+}
+.pageTitle{
+  margin-bottom: 5vh;
+}
 @media (prefers-reduced-motion: no-preference){
   .mainText{
     animation: moveFromTop ease 1s;
@@ -205,6 +234,12 @@ img{
   } 
   .contactText{
     animation: showUp ease 1s;
+  }
+  .leftPannel{
+    animation: moveFromBottom ease 1s;
+  }
+  .rightPannel{
+    animation: moveFromRight ease 1s;
   }
 }
 @keyframes moveFromTop {
@@ -237,6 +272,16 @@ img{
     opacity: 1;
   }
 }
+@keyframes moveFromBottom {
+  from {
+    transform: translateY(50vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+}
 @keyframes showUp {
   from {
     opacity: 0;
@@ -252,8 +297,8 @@ img{
 
 /* Media Query for Mobile View */
 @media all and (max-width: 500px){
-  .frameWrap {
-    min-height: 90vh;
+  .frameWrapMain {
+    min-height: 84vh;
   }
   .navigationWrap a{
     font-size: 1rem;
