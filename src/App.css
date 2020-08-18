@@ -269,10 +269,10 @@ img{
     animation: moveFromLeft ease 1s;
   } 
   .achievementsText{
-    animation: moveFromRight ease 1s;
+    animation: moveFromLeft ease 1s;
   } 
   .demoText{
-    animation: moveFromTop ease 1s;
+    animation: moveFromRight ease 1s;
   } 
   .contactText{
     animation: showUp ease 1s;
@@ -284,7 +284,7 @@ img{
     animation: moveFromRight ease 1s;
   }
   .photoListWrap{
-    animation: moveFromLeft ease 1s;
+    animation: moveFromRight ease 1s;
   }
 }
 @keyframes moveFromTop {
