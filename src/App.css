@@ -30,6 +30,7 @@ body {
     color:#3c3c3c;
     background-image:url("./images/background.png");
     width: 100%;
+    overflow: hidden;
 }
 a{
     color: inherit;
@@ -168,14 +169,16 @@ img{
 }
 .frameWrapMain{
   /* background-color: #fff; */
-  min-height: 88vh;
+  min-height: 94vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #545454;
-  padding: 3vh;
+}
+.contentWrapper{
+  padding: 2vh;
 }
 .mainText{
   font-size: 7vh;
@@ -216,9 +219,48 @@ img{
 .textList li{
   margin: 1.2vh 0;
 }
+.textList span{
+  line-height: 1;
+}
 .pageTitle{
   margin-bottom: 5vh;
 }
+
+.photoListWrap{
+  padding: 1vh;
+  display: block;
+  overflow-y: scroll;
+  width: 100%;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+.photoListWrap::-webkit-scrollbar {
+  display: none;
+}
+.photoList{
+  display: inline-flex;
+}
+.photoItem{
+  margin: 2vh;
+  padding: 2vh;
+  background-color: #fff;
+  width: 25vh;
+  display: inline-block;
+  height: 26vh;
+  box-shadow: 0 0 25px -10px #444444;
+  border-radius: 2px;
+}
+.photo{
+  width: 100%;
+  height: 22vh;
+  background-color: #545454;
+  border-radius: 2px;
+}
+.photoDesc{
+  font-size: 1.2rem;
+  padding: 1vh 0;
+}
+
 @media (prefers-reduced-motion: no-preference){
   .mainText{
     animation: moveFromTop ease 1s;
@@ -298,7 +340,7 @@ img{
 /* Media Query for Mobile View */
 @media all and (max-width: 500px){
   .frameWrapMain {
-    min-height: 84vh;
+    min-height: 90vh;
   }
   .navigationWrap a{
     font-size: 1rem;
