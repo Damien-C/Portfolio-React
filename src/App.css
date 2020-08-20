@@ -228,22 +228,23 @@ img{
 
 .photoListWrap{
   padding: 1vh;
-  display: block;
+  display: flex;
   overflow-y: scroll;
   width: 100%;
   -ms-overflow-style: none; 
   scrollbar-width: none; 
+  align-items: center;
 }
-.photoListWrap::-webkit-scrollbar {
+/* .photoListWrap::-webkit-scrollbar {
   display: none;
-}
+} */
 .photoList{
   display: inline-flex;
 }
 .photoItem{
   margin: 2vh;
   padding: 2vh;
-  background-color: #fff;
+  background-color: #eaeaea;
   width: 25vh;
   display: inline-block;
   height: 26vh;
@@ -260,7 +261,32 @@ img{
   font-size: 1.2rem;
   padding: 1vh 0;
 }
-
+.leftButton, .rightButton{
+  background-color: #89c1bb;
+  width: 10vh;
+  height: 20vh;
+  position: fixed;
+  opacity: .3;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  color: #fff;
+  cursor: pointer;
+}
+.leftButton{
+  left: 0;
+  border-radius: 0 100px 100px 0;
+}
+.rightButton{
+  right: 0;
+  border-radius: 100px 0 0 100px;
+}
+.leftButton:hover, .rightButton:hover{
+  opacity: .8;
+  color: #545454;
+}
 @media (prefers-reduced-motion: no-preference){
   .mainText{
     animation: moveFromTop ease 1s;
