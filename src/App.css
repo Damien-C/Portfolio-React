@@ -23,6 +23,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html{
+  overflow: hidden;
+}
 body {
     line-height: 25px;
     font-family: 'waiting_for_the_sunriseRg', 'Noto Sans KR', sans-serif;
@@ -82,10 +85,6 @@ button:hover{
     background-color: #6c8b8d;
     color: #fff;
 }
-img{
-    max-width:100%;
-}
-
 /* React default auto-generated code */
 .App {
   text-align: center;
@@ -246,16 +245,26 @@ img{
   padding: 2vh;
   background-color: #eaeaea;
   width: 25vh;
-  display: inline-block;
-  height: 26vh;
+  height: 29vh;
   box-shadow: 0 0 25px -10px #444444;
   border-radius: 2px;
+  transition: background-color .3s;
+  cursor: pointer;
+}
+
+.photoItem:hover{
+  background-color: #f3f3f3;
 }
 .photo{
   width: 100%;
   height: 22vh;
   background-color: #545454;
   border-radius: 2px;
+  overflow: hidden;
+  text-align: center;
+}
+.photo img{
+  max-height: 100%;
 }
 .photoDesc{
   font-size: 1.2rem;
@@ -384,5 +393,8 @@ img{
   }
   .navigationWrap ul {
     float: none;
+  }
+  .leftButton, .rightButton{
+    display: none;
   }
 }

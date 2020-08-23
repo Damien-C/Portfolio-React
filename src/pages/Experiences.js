@@ -10,10 +10,10 @@ class Experiences extends React.Component{
                         I'm a Full Stack Web / Dapp Developer !
                     </div>
                     <div className='leftPannel'>
-                        <div class='pannelTitle'>
+                        <div className='pannelTitle'>
                             Skills
                         </div>
-                        <div class='textContent'>
+                        <div className='textContent'>
                             <ul className='textList'>
                                 <li> <span>C#, Java, Javascript, Solidity, .NET, Node.js, React.js, JQuery, HTML5, CSS3</span></li>
                                 <li> <span>Ethereum, Truffle, Android, .NET, Spring</span> </li>
@@ -23,10 +23,10 @@ class Experiences extends React.Component{
                         </div>
                     </div>
                     <div className='rightPannel'>
-                        <div class='pannelTitle'>
+                        <div className='pannelTitle'>
                             Career
                         </div>
-                        <div class='textContent'>
+                        <div className='textContent'>
                             <ul className='textList'>
                                 <li>Wego: Dapp Developer <span>(Feb 2019 - Jun 2020)</span></li>
                                 <li>TD Bank: IT Solutions Developer <span>(Jan 2014 - Apr 2016)</span></li>
