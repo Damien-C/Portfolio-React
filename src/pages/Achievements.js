@@ -1,22 +1,42 @@
 import React from 'react';
 import '../App.css';
-import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, Paper } from '@material-ui/core';
+import Carousel from 'react-material-ui-carousel';
+import { withStyles } from '@material-ui/core/styles';
 import Api from '../proxyServer';
-import Config from '../config.json';
+import CarouselItem from '../components/CarouselItem';
+
+const styles = theme => ({
+    popupFrame: {
+        backgroundColor: '#353535',
+        alignItems: 'center',
+        display: 'flex',
+        paddingBottom: '20px'
+    },
+    borderRadius: {
+        borderRadius: '2px'
+    }
+    // arrowIcon: {
+    //     width: '20px'
+    // }
+});
 
 class Achievements extends React.Component{
     constructor(){
         super(...arguments)
         this.scrollable = React.createRef();
         this.photoItem = React.createRef();
+        this.carouselScroll = React.createRef();
         this.state = {
             currentScroll: 0,
             scrollTotal: 0,
             currentVH: 0,
             dialogOpen: false,
             dialogId: 0,
+            dialogTitle: '',
             projectList: [],
             photoItemWidth: 0,
+            projectDetail: []
         };
     }
     componentDidMount() {
@@ -87,11 +107,75 @@ class Achievements extends React.Component{
         }
         this.scrollable.current.scrollTo({left: this.state.currentScroll, behavior: 'smooth'});
     }
-    onClickPhoto = (e) => {
+    onCarouselRightButtonClick = async () => {
+        //Reset the scroll & screen size again because of a bug that cannot read total scroll size
+        await this.setState({
+            scrollTotal: this.carouselScroll.current.scrollWidth,
+            currentVH: window.innerWidth,
+            currentScroll: this.carouselScroll.current.scrollLeft,
+            photoItemWidth: this.photoItem.current.scrollWidth,
+        });
+        //Check if the value is higher than the total scroll size
+        if((this.state.currentScroll+this.state.currentVH) >= this.state.scrollTotal ){
+             this.setState({
+                //Subscract current view width because scroll begins from left
+                currentScroll: this.state.scrollTotal - this.state.currentVH
+            });
+        }
+        else{
+             this.setState({
+                // subtract half of photo item size since in some screen size images always appear half
+                currentScroll: this.state.currentScroll + this.state.currentVH - (this.state.photoItemWidth) 
+            });
+        }
+        this.carouselScroll.current.scrollTo({left: this.state.currentScroll, behavior: 'smooth'});
+    }
+    onCarouselLeftButtonClick = async () => {
+        //Reset the scroll & screen size again because of a bug that cannot read total scroll size
+        await this.setState({
+            scrollTotal: this.carouselScroll.current.scrollWidth,
+            currentVH: window.innerWidth,
+            currentScroll: this.carouselScroll.current.scrollLeft,
+            photoItemWidth: this.photoItem.current.scrollWidth,
+        });
+        //Check if the value is lower than the 0
+        if((this.state.currentScroll-this.state.currentVH) <= 0 ){
+            this.setState({
+                currentScroll: 0
+            });
+        }
+        else{
+            this.setState({
+                // subtract half of photo item size since in some screen size images always appear half
+                currentScroll: this.state.currentScroll - this.state.currentVH + (this.state.photoItemWidth)
+            });
+        }
+        this.carouselScroll.current.scrollTo({left: this.state.currentScroll, behavior: 'smooth'});
+    }
+    onClickPhoto = (e, n) => {
         this.setState({
             dialogOpen: true,
-            dialogId: e
+            dialogId: e,
+            dialogTitle: n
         })
+
+        fetch(Api.getApiServer()+'/api/projectDetail?id='+e,{
+            method: 'get',
+            dataType: 'json',
+            headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            this.setState({projectDetail: responseData});
+        })
+        .catch((error)=>{
+            console.log('Error fetching project list',error);
+        });
+
+
     }
     handleDialogClose = () => {
         this.setState({
@@ -99,20 +183,48 @@ class Achievements extends React.Component{
         })
     }
     render(){
-        
+        const { classes } = this.props;
         return(
             <div className='frameWrapMain'>
 
                 {/* Dialog */}
-                <Dialog open={this.state.dialogOpen} close={this.handleDialogClose} fullWidth={true} maxWidth='lg'>
-                    <DialogTitle>{this.state.dialogId}</DialogTitle>
-                        <DialogContent>
-                            <div className=''>
+                <Dialog className={classes.borderRadius} open={this.state.dialogOpen} onClose={this.handleDialogClose} fullWidth={true} maxWidth='lg'>
+                    {/* <DialogTitle>{this.state.dialogTitle}</DialogTitle> */}
+                        <DialogContent ref={this.carouselScroll} className={classes.popupFrame} >
+                            <div className='carouselLeftButton' onClick={this.onCarouselLeftButtonClick}> { '<' } </div>
+                            <div className='carouselRightButton' onClick={this.onCarouselRightButtonClick}> { '>' } </div>
+                            <div className='carousel'>
+                                    {
+                                        this.state.projectDetail.map(e => {
+                                            return(
+                                                // <div className='canvas'>
+                                                    <img key={e.id} src={Api.getApiServer()+'/'+e.fileName} />
+                                                // </div>
+                                            )
+                                        })
+                                    }
+
+                                    {/* <Carousel autoPlay={false} animation={"slide"}>
+                                        {
+                                            this.state.projectDetail.map(e => {
+                                                return(
+                                                    <CarouselItem key={e.id} item={Api.getApiServer()+'/'+e.fileName} />
+                                                )
+                                            })
+                                        }
+                                    </Carousel> */}
+                                    {/* this.state.projectDetail.map(e => {
+                                         return(
+                                           <div>
+                                                <img src={Api.getApiServer()+'/'+e.fileName} />
+                                             </div>
+                                         )
+                                     }) */}
                                 
                             </div>
-                            <div className=''>
+                            {/* <div className=''>
                                 <button onClick={this.handleDialogClose}>확인</button>
-                            </div>
+                            </div> */}
                             
                         </DialogContent>
                 </Dialog>
@@ -131,7 +243,7 @@ class Achievements extends React.Component{
                         {
                             this.state.projectList.map(e => {
                                 return(
-                                    <div ref={this.photoItem} key={e.name} className='photoItem' onClick={() => this.onClickPhoto(e.name)}>
+                                    <div ref={this.photoItem} key={e.id} className='photoItem' onClick={() => this.onClickPhoto(e.id, e.name)}>
                                         <div className='photo'>
                                             <img src={Api.getApiServer()+'/'+ e.fileName} />
                                         </div>
@@ -157,4 +269,4 @@ class Achievements extends React.Component{
     }
 }
 
-export default Achievements;
+export default withStyles(styles)(Achievements);

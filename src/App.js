@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 ////Importing modules 
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 ////Importing components
 import Navigation from './components/Navigation';
 import Main from './pages/Main';
@@ -13,10 +14,31 @@ import Demonstration from './pages/Demonstration';
 import Experiences from './pages/Experiences';
 
 
+
+const GlobalCss = withStyles({
+	'@global': {
+		'.MuiPaper-rounded': {
+			borderRadius: '0'
+    },
+    '.MuiDialog-paperFullWidth': {
+      width: '100%',
+      maxWidth: '100%',
+      margin: 0
+    },
+    
+		// 'button:hover': {
+		// 	backgroundColor: `${mainThemeColor}`
+		// },
+		
+
+	},
+})(() => null);
+
 class App extends React.Component{
   render(){
     return(
       <Router>
+        <GlobalCss />
         <Route component={Navigation} />
         <Switch>
           <Route exact path='/Main' component={Main} />
@@ -44,4 +66,4 @@ class App extends React.Component{
 //   );
 // }
 
-export default App;
+export default withStyles()(App);
