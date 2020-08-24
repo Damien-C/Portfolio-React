@@ -10,7 +10,6 @@ import CarouselItem from '../components/CarouselItem';
 const styles = theme => ({
     popupFrame: {
         alignItems: 'center',
-        justifyContent: 'center',
         display: 'flex',
         scrollbarWidth: 'none',
         padding: 0,
@@ -51,7 +50,8 @@ class Achievements extends React.Component{
             dialogTitle: '',
             projectList: [],
             photoItemWidth: 0,
-            projectDetail: []
+            projectDetail: [],
+            dialogDesc: ''
         };
     }
     componentDidMount() {
@@ -128,7 +128,6 @@ class Achievements extends React.Component{
             scrollTotal: this.carouselScroll.current.scrollWidth,
             currentVH: window.innerWidth,
             currentScroll: this.carouselScroll.current.scrollLeft,
-            photoItemWidth: this.photoItem.current.scrollWidth,
         });
         //Check if the value is higher than the total scroll size
         if((this.state.currentScroll+this.state.currentVH) >= this.state.scrollTotal ){
@@ -140,7 +139,7 @@ class Achievements extends React.Component{
         else{
              this.setState({
                 // subtract half of photo item size since in some screen size images always appear half
-                currentScroll: this.state.currentScroll + this.state.currentVH - (this.state.photoItemWidth) 
+                currentScroll: this.state.currentScroll + this.state.currentVH
             });
         }
         this.carouselScroll.current.scrollTo({left: this.state.currentScroll, behavior: 'smooth'});
@@ -151,7 +150,6 @@ class Achievements extends React.Component{
             scrollTotal: this.carouselScroll.current.scrollWidth,
             currentVH: window.innerWidth,
             currentScroll: this.carouselScroll.current.scrollLeft,
-            photoItemWidth: this.photoItem.current.scrollWidth,
         });
         //Check if the value is lower than the 0
         if((this.state.currentScroll-this.state.currentVH) <= 0 ){
@@ -162,16 +160,17 @@ class Achievements extends React.Component{
         else{
             this.setState({
                 // subtract half of photo item size since in some screen size images always appear half
-                currentScroll: this.state.currentScroll - this.state.currentVH + (this.state.photoItemWidth)
+                currentScroll: this.state.currentScroll - this.state.currentVH
             });
         }
         this.carouselScroll.current.scrollTo({left: this.state.currentScroll, behavior: 'smooth'});
     }
-    onClickPhoto = (e, n) => {
+    onClickPhoto = (e, n, d) => {
         this.setState({
             dialogOpen: true,
             dialogId: e,
-            dialogTitle: n
+            dialogTitle: n,
+            dialogDesc: d
         })
 
         fetch(Api.getApiServer()+'/api/projectDetail?id='+e,{
@@ -206,6 +205,7 @@ class Achievements extends React.Component{
                 <Dialog className={classes.borderRadius} open={this.state.dialogOpen} onClose={this.handleDialogClose} fullWidth={true} maxWidth='lg'>
                     {/* <DialogTitle>{this.state.dialogTitle}</DialogTitle> */}
                         <DialogContent ref={this.carouselScroll} className={classes.popupFrame} >
+                            <div className='buttonClose' onClick={this.handleDialogClose}>X</div>
                             <div className='carouselLeftButton' onClick={this.onCarouselLeftButtonClick}> { '<' } </div>
                             <div className='carouselRightButton' onClick={this.onCarouselRightButtonClick}> { '>' } </div>
                             <div className='carousel'>
@@ -213,7 +213,9 @@ class Achievements extends React.Component{
                                         this.state.projectDetail.map(e => {
                                             return(
                                                 // <div className='canvas'>
-                                                    <img key={e.id} src={require('../images/src/'+e.fileName)} />
+                                                    <div  key={e.id} className='imageWrap'>
+                                                        <img src={require('../images/src/'+e.fileName)} />
+                                                    </div>
                                                 // </div>
                                             )
                                         })
@@ -235,14 +237,16 @@ class Achievements extends React.Component{
                                              </div>
                                          )
                                      }) */}
-                                
+                                <div className='subtitle'>
+                                    {
+                                        this.state.dialogDesc
+                                    }
+                                </div>
                             </div>
                             {/* <div className=''>
                                 <button onClick={this.handleDialogClose}>확인</button>
                             </div> */}
-                            <div className='subtitle'>
-                                프로젝트 설명
-                            </div>
+                            
                             
                         </DialogContent>
                 </Dialog>
@@ -261,7 +265,7 @@ class Achievements extends React.Component{
                         {
                             this.state.projectList.map(e => {
                                 return(
-                                    <div ref={this.photoItem} key={e.id} className='photoItem' onClick={() => this.onClickPhoto(e.id, e.name)}>
+                                    <div ref={this.photoItem} key={e.id} className='photoItem' onClick={() => this.onClickPhoto(e.id, e.name, e.desc)}>
                                         <div className='photo'>
                                             <img src={require('../images/src/'+e.fileName)} />
                                         </div>

@@ -19,7 +19,7 @@ dbConnect();
 
 
 router.get('/projectList', (req, res) => {
-    connection.query(`SELECT Project.id, Project.name, date_format(Project.dateStart, '%b. %Y') dateStart, date_format(Project.dateEnd, '%b. %Y') dateEnd, ProjectImage.fileName FROM portfolio.Project
+    connection.query(`SELECT Project.id, Project.name, Project.desc, date_format(Project.dateStart, '%b. %Y') dateStart, date_format(Project.dateEnd, '%b. %Y') dateEnd, ProjectImage.fileName FROM portfolio.Project
     left join portfolio.ProjectImage on Project.projectImage_id = ProjectImage.id order by Project.dateEnd desc
     `, (err, rows) => {
         res.send(rows);
@@ -27,7 +27,7 @@ router.get('/projectList', (req, res) => {
 });
 router.get('/projectDetail', (req, res) => {
     if(req.query.id){
-        connection.query(`select ProjectImage.id, ProjectImage.desc, ProjectImage.fileName, Company.name companyName from ProjectImage
+        connection.query(`select ProjectImage.id, ProjectImage.fileName, Company.name companyName from ProjectImage
         join Project on Project.id = ProjectImage.project_id
         join Company on Company.id = ProjectImage.company_id
         where ProjectImage.project_id = ${req.query.id}
