@@ -276,9 +276,13 @@ button:hover{
 .imageWrap{
   min-width: 100vw;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .carousel img{
-  max-height: 66vmin;
+  max-height: 70vh;
+  max-width: 100%;
   box-shadow: 0 0 25px -10px #000;
 }
 
@@ -313,19 +317,18 @@ button:hover{
   position: fixed;
   color: #fff;
   width: 96vw;
-  /* text-align: center; */
   font-size: 1rem;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 -62px 50px 0px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0,0,0,.7);
+  box-shadow: 0 -62px 50px 0 rgba(0,0,0,.7);
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  /* justify-content: center; */
   height: 30vh;
   padding: 0 15vw;
   font-family: arial;
   left: -13vw;
   overflow: scroll;
+  z-index: 9999999;
 }
 
 .buttonClose{
@@ -336,7 +339,7 @@ button:hover{
   opacity: .3;
   width: 8vw;
   height: 8vw;
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
