@@ -237,16 +237,16 @@ class Achievements extends React.Component{
                                              </div>
                                          )
                                      }) */}
-                                <div className='subtitle'>
-                                    {
-                                        this.state.dialogDesc
-                                    }
-                                </div>
+                                
                             </div>
                             {/* <div className=''>
                                 <button onClick={this.handleDialogClose}>확인</button>
                             </div> */}
-                            
+                            <div className='subtitle'>
+                                {
+                                    this.state.dialogDesc
+                                }
+                            </div>
                             
                         </DialogContent>
                 </Dialog>
