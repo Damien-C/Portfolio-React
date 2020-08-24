@@ -9,6 +9,7 @@ import CarouselItem from '../components/CarouselItem';
 
 const styles = theme => ({
     popupFrame: {
+        height: '100vh',
         alignItems: 'center',
         display: 'flex',
         scrollbarWidth: 'none',
