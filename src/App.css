@@ -329,6 +329,7 @@ button:hover{
   left: -13vw;
   overflow: scroll;
   z-index: 9999999;
+  -webkit-backface-visibility: hidden;
 }
 
 .buttonClose{
@@ -347,6 +348,7 @@ button:hover{
   top: 1vw;
   right: 1vw;
   cursor: pointer;
+  -webkit-backface-visibility: hidden;
 }
 .carouselLeftButton, .carouselRightButton{
   background-color: #545454;
