@@ -9,7 +9,6 @@ import CarouselItem from '../components/CarouselItem';
 
 const styles = theme => ({
     popupFrame: {
-        height: '100vh',
         alignItems: 'center',
         display: 'flex',
         scrollbarWidth: 'none',
@@ -203,7 +202,7 @@ class Achievements extends React.Component{
             <div className='frameWrapMain'>
 
                 {/* Dialog */}
-                <Dialog className={classes.borderRadius} open={this.state.dialogOpen} onClose={this.handleDialogClose} fullWidth={true} maxWidth='lg'>
+                <Dialog className={classes.borderRadius} open={this.state.dialogOpen} onClose={this.handleDialogClose} fullWidth={true} fullScreen={true} maxWidth='lg'>
                     {/* <DialogTitle>{this.state.dialogTitle}</DialogTitle> */}
                         <DialogContent ref={this.carouselScroll} className={classes.popupFrame} >
                             <div className='buttonClose' onClick={this.handleDialogClose}>X</div>
