@@ -25,7 +25,14 @@ const GlobalCss = withStyles({
       maxWidth: '100%',
       margin: 0
     },
-    
+    '.MuiDialogContent-root:first-child': {
+      paddingTop: 0
+    },
+    '.MuiPaper-root': {
+      backgroundColor: 'rgb(0 0 0 / 0%)',
+      boxShadow: 'none'
+    },
+  
 		// 'button:hover': {
 		// 	backgroundColor: `${mainThemeColor}`
 		// },

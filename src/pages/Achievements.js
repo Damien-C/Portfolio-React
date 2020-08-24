@@ -6,16 +6,31 @@ import { withStyles } from '@material-ui/core/styles';
 import Api from '../proxyServer';
 import CarouselItem from '../components/CarouselItem';
 
+
 const styles = theme => ({
     popupFrame: {
-        backgroundColor: '#353535',
         alignItems: 'center',
+        justifyContent: 'center',
         display: 'flex',
-        paddingBottom: '20px'
+        scrollbarWidth: 'none',
+        padding: 0,
+        paddingTop: 0,
+        'overflow-x': 'scroll',
+        'overflow-y': 'hidden', 
+        '-ms-overflow-style': 'none',
+        '&::-webkit-scrollbar': {
+            display: 'none'
+        }
     },
+
     borderRadius: {
         borderRadius: '2px'
-    }
+    },
+
+    // 'MuiDialogContent-root':{
+    //     -msO: 'none', 
+    //     scrollbarWidth: 'none', 
+    //   },
     // arrowIcon: {
     //     width: '20px'
     // }
@@ -198,7 +213,7 @@ class Achievements extends React.Component{
                                         this.state.projectDetail.map(e => {
                                             return(
                                                 // <div className='canvas'>
-                                                    <img key={e.id} src={Api.getApiServer()+'/'+e.fileName} />
+                                                    <img key={e.id} src={require('../images/src/'+e.fileName)} />
                                                 // </div>
                                             )
                                         })
@@ -225,6 +240,9 @@ class Achievements extends React.Component{
                             {/* <div className=''>
                                 <button onClick={this.handleDialogClose}>확인</button>
                             </div> */}
+                            <div className='subtitle'>
+                                프로젝트 설명
+                            </div>
                             
                         </DialogContent>
                 </Dialog>
@@ -245,7 +263,7 @@ class Achievements extends React.Component{
                                 return(
                                     <div ref={this.photoItem} key={e.id} className='photoItem' onClick={() => this.onClickPhoto(e.id, e.name)}>
                                         <div className='photo'>
-                                            <img src={Api.getApiServer()+'/'+ e.fileName} />
+                                            <img src={require('../images/src/'+e.fileName)} />
                                         </div>
                                         <div  className='photoDesc'>
                                             <div>
