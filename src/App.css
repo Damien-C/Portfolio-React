@@ -338,9 +338,9 @@ button:hover{
   color: #fff;
   background-color: #545454;
   opacity: .3;
-  width: 8vw;
-  height: 8vw;
-  font-size: 1.5rem;
+  width: 9vmax;
+  height: 9vmax;
+  font-size: 1.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
