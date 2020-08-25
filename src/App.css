@@ -321,7 +321,6 @@ button:hover{
   bottom: 0;
   background-color: rgba(0,0,0,.7);
   box-shadow: 0 -62px 50px 0 rgba(0,0,0,.7);
-  display: flex;
   /* justify-content: center; */
   height: 30vh;
   padding: 0 15vw;
@@ -329,9 +328,13 @@ button:hover{
   left: -13vw;
   overflow: scroll;
   z-index: 9999999;
-  -webkit-backface-visibility: hidden;
 }
-
+.contextTitle{
+  font-size: 1.2rem;
+}
+.contextList li{
+  margin: 1vh 0;
+}
 .buttonClose{
   position: fixed;
   font-family: arial;
@@ -348,7 +351,6 @@ button:hover{
   top: 1vw;
   right: 1vw;
   cursor: pointer;
-  -webkit-backface-visibility: hidden;
 }
 .carouselLeftButton, .carouselRightButton{
   background-color: #545454;
@@ -375,7 +377,9 @@ button:hover{
 .carouselLeftButton:hover, .carouselRightButton:hover, .buttonClose:hover{
   opacity: .8;
 }
-
+.contactInfo li{
+  margin: 1vh 0;
+}
 @media (prefers-reduced-motion: no-preference){
   .mainText{
     animation: moveFromTop ease 1s;
@@ -384,13 +388,13 @@ button:hover{
     animation: moveFromLeft ease 1s;
   } 
   .achievementsText{
-    animation: moveFromLeft ease 1s;
+    animation: moveFromTop ease 1s;
   } 
   .demoText{
     animation: moveFromRight ease 1s;
   } 
   .contactText{
-    animation: showUp ease 1s;
+    animation: showUp ease 2s;
   }
   .leftPannel{
     animation: moveFromBottom ease 1s;
@@ -400,6 +404,9 @@ button:hover{
   }
   .photoListWrap{
     animation: moveFromRight ease 1s;
+  }
+  .contactInfo{
+    animation: moveFromBottom ease 1s;
   }
 }
 @keyframes moveFromTop {

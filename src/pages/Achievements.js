@@ -51,7 +51,13 @@ class Achievements extends React.Component{
             projectList: [],
             photoItemWidth: 0,
             projectDetail: [],
-            dialogDesc: ''
+            dialogDesc: '',
+            skills: '', 
+            dateStart: '', 
+            dateEnd: '', 
+            roll: '',
+            company: '',
+            country: ''
         };
     }
     componentDidMount() {
@@ -165,14 +171,19 @@ class Achievements extends React.Component{
         }
         this.carouselScroll.current.scrollTo({left: this.state.currentScroll, behavior: 'smooth'});
     }
-    onClickPhoto = (e, n, d) => {
+    onClickPhoto = (e, n, d, s, ds, de, r, c, co) => {
         this.setState({
             dialogOpen: true,
             dialogId: e,
             dialogTitle: n,
-            dialogDesc: d
+            dialogDesc: d,
+            skills: s,
+            dateStart: ds,
+            dateEnd: de,
+            roll: r,
+            company: c,
+            country: co
         })
-
         fetch(Api.getApiServer()+'/api/projectDetail?id='+e,{
             method: 'get',
             dataType: 'json',
@@ -243,9 +254,14 @@ class Achievements extends React.Component{
                                 <button onClick={this.handleDialogClose}>확인</button>
                             </div> */}
                             <div className='subtitle'>
-                                {
-                                    this.state.dialogDesc
-                                }
+                                <div className='contextTitle'>{this.state.dialogTitle}</div>
+                                <ul className='contextList'>
+                                    <li>{this.state.company}, {this.state.country}</li>
+                                    <li>기간 :  {this.state.dateStart} - {this.state.dateEnd}</li>
+                                    <li>역할 :  {this.state.roll}</li>
+                                    <li>사용기술 :  {this.state.skills}</li>
+                                    <li>설명 :  {this.state.dialogDesc}</li>
+                                </ul>
                             </div>
                             
                         </DialogContent>
@@ -254,7 +270,7 @@ class Achievements extends React.Component{
                 {/* Main */}
                 <div className='contentWrapper'>
                     <div className='achievementsText pageTitle'>
-                    "Genius is one percent inspiration and ninety-nine perspiration."
+                        We don't make mistakes, just happy little accidents. Programming should be fun.
                     </div>
                 </div>
                 <div ref={this.scrollable} className='photoListWrap'>
@@ -265,7 +281,7 @@ class Achievements extends React.Component{
                         {
                             this.state.projectList.map(e => {
                                 return(
-                                    <div ref={this.photoItem} key={e.id} className='photoItem' onClick={() => this.onClickPhoto(e.id, e.name, e.desc)}>
+                                    <div ref={this.photoItem} key={e.id} className='photoItem' onClick={() => this.onClickPhoto(e.id, e.name, e.desc, e.skills, e.dateStart, e.dateEnd, e.roll, e.company, e.country)}>
                                         <div className='photo'>
                                             <img src={require('../images/src/'+e.fileName)} />
                                         </div>

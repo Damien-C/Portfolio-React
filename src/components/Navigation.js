@@ -10,7 +10,6 @@ class Navigation extends React.Component{
                     <li><NavLink activeClassName='activeLink' to='/Main'>Intro</NavLink></li>
                     <li><NavLink activeClassName='activeLink' to='/Experiences'>Experiences</NavLink></li>
                     <li><NavLink activeClassName='activeLink' to='/Achievements'>Achievements</NavLink></li>
-                    <li><NavLink activeClassName='activeLink' to='/Demonstration'>Demo</NavLink></li>
                     <li><NavLink activeClassName='activeLink' to='/Contact'>Contact</NavLink> </li>
                 </ul>
                 <div className='clear'></div>
