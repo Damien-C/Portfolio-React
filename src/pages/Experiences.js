@@ -33,7 +33,7 @@ class Experiences extends React.Component{
                                 <li>Ahaidea.com: Web Developer <span>(Jan 2013 - Dec 2013)</span></li>
                                 <li>Toronto Uhak.com: Web Developer <span>(Jun 2011 – Aug 2011)</span> </li>
                                 <li>Humber College: Computer Programmer<span>(Sept 2010 – Jan 2013)</span> </li>
-                            </ul>
+                             </ul>
                         </div>
                     </div>
                     <div className='clear'></div>
