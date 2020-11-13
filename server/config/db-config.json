@@ -6,6 +6,13 @@
 		"password"		: "Elszl2378",
 		"database"		: "portfolio"
 		
+	},
+	"rds" : {
+		"host"			: "awsrds.c9vstitdx7r9.ap-northeast-2.rds.amazonaws.com",
+		"port"			: "3306",
+		"user"			: "admin",
+		"password"		: "Elszl2378",
+		"database"		: "portfolio"
 	}
 }
 

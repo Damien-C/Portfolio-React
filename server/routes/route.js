@@ -6,7 +6,7 @@ const cors = require('cors');
 //DB Connection info
 const dbconfig = require('../config/db-config.json');
 const IMAGEPATH = require('../config/src-config.json');
-const dbconfigEnv = dbconfig.dev;
+const dbconfigEnv = dbconfig.rds;
 let connection;
 let tryConnectCount = 0;
 
