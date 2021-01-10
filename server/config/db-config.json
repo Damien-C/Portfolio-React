@@ -2,7 +2,7 @@
 	"dev" : {
 		"host"			: "210.114.17.158",
 		"port"			: "3306",
-		"user"			: "dev",
+		"user"			: "admin",
 		"password"		: "Elszl2378",
 		"database"		: "portfolio"
 		
